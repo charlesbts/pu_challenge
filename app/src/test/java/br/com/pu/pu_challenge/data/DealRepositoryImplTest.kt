@@ -18,6 +18,7 @@ import java.io.IOException
 class DealRepositoryImplTest {
 
     private var dealRepositoryImpl : DealRepositoryImpl? = null
+
     private lateinit var api : PUApi
 
     @Before

@@ -6,6 +6,24 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowContentTransitions">true</item>
+
+    </style>
+
+    <style name = "AppTheme.Fullscreen" parent = "Theme.AppCompat.NoActionBar">
+        <item name = "android:windowFullscreen">true</item>
+    </style>
+
+    <style name = "AppTheme.NoActionBar">
+        <item name = "windowActionBar">false</item>
+        <item name = "windowNoTitle">true</item>
+
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <style name="toolbar_theme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorControlNormal">#F0FFFF</item>
     </style>
 
 </resources>

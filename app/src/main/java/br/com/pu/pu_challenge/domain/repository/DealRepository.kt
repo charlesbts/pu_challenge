@@ -1,5 +1,7 @@
 package br.com.pu.pu_challenge.domain.repository
 
+import androidx.lifecycle.LiveData
+import androidx.paging.PagedList
 import br.com.pu.pu_challenge.domain.entity.Deal
 
 /**
@@ -11,5 +13,5 @@ interface DealRepository {
      * Gets every [Deal] present in the repository.
      * @return a list of every [Deal]
      */
-    fun getDeals(): List<Deal>
+    fun getDeals(): PagedList<Deal>
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PU_Challenge</string>
+    <string name="br_currency">R$</string>
 </resources>
