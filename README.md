@@ -14,7 +14,7 @@ Onde é definidos a lógica de negócio. Possui uma classe abstrata que deve rod
 
 ### data
 
-Implementa o padrão repositório e utiliza da internet para buscar os dados e o BD para cache. Existem dataclasses para internet (network/remote) e banco de dados (database/DealLocal) que devem utilizar das extensões definidas em /mapper antes de retornas os dados para a camada /domain.
+Implementa o padrão repositório e utiliza da internet para buscar os dados e o BD para cache. Existem dataclasses para internet (network/remote) e banco de dados (database/local) que devem utilizar das extensões definidas em /mapper antes de retornas os dados para a camada /domain.
 
 ### di
 

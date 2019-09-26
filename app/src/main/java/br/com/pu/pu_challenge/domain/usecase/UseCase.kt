@@ -17,7 +17,7 @@ abstract class UseCase<T> {
     var listenerMap: MutableMap<String, Listener<T>?> = mutableMapOf()
 
     fun release(tag: String) {
-        listenerMap[tag] = null
+        listenerMap.remove(tag)
     }
 
     operator fun invoke(tag: String, listener: Listener<T>) {

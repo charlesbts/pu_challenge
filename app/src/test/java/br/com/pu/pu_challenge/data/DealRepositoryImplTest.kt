@@ -3,6 +3,8 @@ package br.com.pu.pu_challenge.data
 import br.com.pu.pu_challenge.data.database.AppDatabase
 import br.com.pu.pu_challenge.data.network.PUApi
 import br.com.pu.pu_challenge.data.network.remote.DealRemote
+import br.com.pu.pu_challenge.data.network.remote.ImagesRemote
+import br.com.pu.pu_challenge.data.network.remote.PartnerRemote
 import br.com.pu.pu_challenge.data.network.remote.ResponseRemote
 import br.com.pu.pu_challenge.domain.entity.Deal
 import okhttp3.ResponseBody
@@ -28,25 +30,27 @@ class DealRepositoryImplTest {
     fun setUp() {
         // A little hack to avoid the mock of the Call interface
         api = Mockito.mock(PUApi::class.java, Mockito.RETURNS_DEEP_STUBS)
-        db = Mockito.mock(AppDatabase::class.java)
+        db = Mockito.mock(AppDatabase::class.java, Mockito.RETURNS_DEEP_STUBS)
         dealRepositoryImpl = DealRepositoryImpl(api, db)
         Assert.assertNotNull(dealRepositoryImpl)
     }
 
-   /* @Test
+    @Test
     fun `test deals retrieve works as expected`() {
         val responseRemoteMock = ResponseRemote(200,
-            listOf(DealRemote("someId", "someThumb", "someTitle",
-                "someDescription", 100.0.toFloat())))
+            listOf(DealRemote("someId", listOf(ImagesRemote("someThumbUrl")),
+                PartnerRemote("someTitle"), "someDescription", 100.0.toFloat())))
+
         val response = Response.success(responseRemoteMock)
-        val dealsExpected = listOf(Deal("someId", "someThumb", "someTitle",
+
+        val dealsExpected = listOf(Deal("someId", listOf("someThumb"), "someTitle",
             "someDescription", 100.0.toFloat()))
 
         Mockito.`when`(api.retrieveDeals().execute()).thenReturn(response)
-        val dealsReturned = dealRepositoryImpl!!.getDeals()
+        val pagedList = dealRepositoryImpl!!.getDeals()
 
-        Assert.assertEquals(dealsExpected, dealsReturned)
-    }*/
+        Assert.assertEquals(dealsExpected, pagedList.snapshot())
+    }
 
     @Test(expected = IOException::class)
     fun `test the server returned some status error`() {
