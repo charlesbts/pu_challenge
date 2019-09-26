@@ -6,7 +6,6 @@ import br.com.pu.pu_challenge.domain.entity.Deal
 import br.com.pu.pu_challenge.presentation.fragment.DealsFragment
 import br.com.pu.pu_challenge.presentation.toBundle
 import androidx.core.app.ActivityOptionsCompat
-import android.view.View
 import br.com.pu.pu_challenge.R
 import kotlinx.android.synthetic.main.recycler_deals.*
 
@@ -30,8 +29,6 @@ class DealsActivity : BaseActivity() {
     fun navigateToDealDetailsActivity(deal: Deal) {
         val intent = Intent(this, DealDetailsActivity::class.java)
         intent.putExtra(DEAL_EXTRA, deal.toBundle())
-        val options = ActivityOptionsCompat
-            .makeSceneTransitionAnimation(this, dealImageView as View, "profile")
-        startActivity(intent, options.toBundle())
+        startActivity(intent)
     }
 }

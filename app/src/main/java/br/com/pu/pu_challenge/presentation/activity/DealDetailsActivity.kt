@@ -29,7 +29,7 @@ class DealDetailsActivity : BaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == android.R.id.home) {
-            supportFinishAfterTransition()
+            finish()
         }
         return super.onOptionsItemSelected(item)
     }

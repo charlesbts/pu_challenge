@@ -1,40 +1,42 @@
 package br.com.pu.pu_challenge.presentation.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 import br.com.pu.pu_challenge.domain.entity.Deal
 import br.com.pu.pu_challenge.domain.usecase.GetDealsUseCase
 import br.com.pu.pu_challenge.domain.usecase.UseCase
+import br.com.pu.pu_challenge.presentation.ScreenState
 
 class DealsViewModel(private val getDealsUseCase: GetDealsUseCase): ViewModel() {
 
-    var dealsResult : MutableLiveData<PagedList<Deal>> = MutableLiveData()
+    companion object {
+        const val DEALS_USE_CASE_TAG = "deals_use_case"
+    }
+
+    var dealsResult : MutableLiveData<ScreenState<PagedList<Deal>>> = MutableLiveData()
 
     init {
         resume()
     }
 
     private fun resume() {
-        getDealsUseCase(GetDealsUseCase::class.toString(), this.GetDealsListener())
+        getDealsUseCase(DEALS_USE_CASE_TAG, this.GetDealsListener())
     }
 
     override fun onCleared() {
-        getDealsUseCase.release(GetDealsUseCase::class.toString())
+        getDealsUseCase.release(DEALS_USE_CASE_TAG)
         super.onCleared()
     }
 
     inner class GetDealsListener : UseCase.Listener<PagedList<Deal>> {
 
         override fun onSuccess(result: PagedList<Deal>) {
-            dealsResult.value = result
+            dealsResult.value = ScreenState.Render(result)
         }
 
         override fun onError(throwable: Throwable) {
-            Log.d("ERR", throwable.message)
+            dealsResult.value = ScreenState.NetworkError
         }
     }
 }

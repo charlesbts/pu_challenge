@@ -1,6 +1,5 @@
 package br.com.pu.pu_challenge.domain.repository
 
-import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
 import br.com.pu.pu_challenge.domain.entity.Deal
 

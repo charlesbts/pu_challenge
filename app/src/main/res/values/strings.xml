@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">PU_Challenge</string>
     <string name="br_currency">R$</string>
+
+    <string name="error">Erro</string>
+    <string name="network_error_message">Não foi possível conectar-se ao servidor. Por favor, verifique sua conexão com a internet.</string>
 </resources>

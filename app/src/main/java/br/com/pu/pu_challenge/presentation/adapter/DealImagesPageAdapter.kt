@@ -26,6 +26,7 @@ class DealImagesPageAdapter(private val context: Context, private val thumbnails
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(thumbImageView)
         container.addView(view)
+
         return view
     }
 

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.viewpager.widget.ViewPager
 import br.com.pu.pu_challenge.R
 import br.com.pu.pu_challenge.domain.entity.Deal
+import br.com.pu.pu_challenge.presentation.activity.DealDetailsActivity
 import br.com.pu.pu_challenge.presentation.adapter.DealImagesPageAdapter
 import br.com.pu.pu_challenge.presentation.toBundle
 import br.com.pu.pu_challenge.presentation.toEntity
